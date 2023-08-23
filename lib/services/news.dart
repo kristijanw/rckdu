@@ -38,8 +38,8 @@ Future<void> checkForNewNews(
   // Ako postoji nova novost onda ćemo prikazati notifikaciju i spremiti novu novost
   if (newIds.isNotEmpty) {
     LocalNotification.showNotification(
-      title: 'Nova obavijest',
-      body: 'Poruka',
+      title: 'Obavijest',
+      body: 'Imate nove objave u aplikaciji.',
       flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
     );
 

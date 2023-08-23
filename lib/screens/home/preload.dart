@@ -12,7 +12,7 @@ final class HomePreload extends HookWidget {
     useEffect(() {
       return Timer(
         const Duration(seconds: 5),
-        () => context.go('/news'),
+        () => context.go('/home'),
       ).cancel;
     }, []);
 

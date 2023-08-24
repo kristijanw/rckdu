@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'TURISTIČKA I UGOSTITELJSKA ŠKOLA DUBROVNIK',
+                    'home1'.tr(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: size.height * 0.02,
                   ),
                   Text(
-                    'Regionalni centar kompetentnosti u turizmu i ugostiteljstvu Dubrovnik',
+                    'home2'.tr(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -65,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: size.height * 0.02,
                   ),
                   Text(
-                    'Regionalni centar kompetentnosti Dubrovnik – RCK DU je mjesto izvrsnosti strukovnog obrazovanja i osposobljavanja te obuhvaća jačanje kapaciteta i stručnosti ljudskih resursa u sektoru Turizam i ugostiteljstvo.',
+                    'home3'.tr(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,

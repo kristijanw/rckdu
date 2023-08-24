@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
+import 'package:rckdu/models/news_model.dart';
 import 'package:rckdu/services/local_notif.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -48,5 +49,16 @@ Future<void> checkForNewNews(
       'savedNews',
       savedNews.map((newsId) => newsId.toString()).toList(),
     );
+  }
+}
+
+class NewsService {
+  static Future<NewsModel> getNews(int newsId) async {
+    var response = await http.get(
+      Uri.parse('https://rckdu.hr/wp-json/wp/v2/posts/$newsId'),
+    );
+    final result = json.decode(response.body);
+
+    return NewsModel.fromJson(result);
   }
 }

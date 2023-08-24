@@ -53,6 +53,7 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
       body: RefreshIndicator(
         onRefresh: () => fetchNews(),
+        color: const Color.fromRGBO(193, 2, 48, 1),
         child: newsData.isNotEmpty
             ? ListView.builder(
                 padding: const EdgeInsets.only(top: 30),
@@ -71,7 +72,10 @@ class _NewsScreenState extends State<NewsScreen> {
                   );
                 },
               )
-            : const CircularProgressIndicator(),
+            : const Center(
+                child: CircularProgressIndicator(
+                color: Color.fromRGBO(193, 2, 48, 1),
+              )),
       ),
     );
   }

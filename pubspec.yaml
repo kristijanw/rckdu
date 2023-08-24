@@ -22,6 +22,7 @@ dependencies:
   permission_handler: ^10.4.3
   flutter_html: ^3.0.0-alpha.3
   flutter_background_service: ^5.0.1
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:

@@ -79,11 +79,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
             Column(
               children: [
                 SizedBox(
+                  height: size.height * 0.07,
+                ),
+                SizedBox(
                   height: size.height * 0.15,
                 ),
                 SvgPicture.asset(
                   'assets/images/logo.svg',
-                  width: size.width * 0.4,
+                  width: size.width * 0.25,
                 ),
                 SizedBox(
                   height: size.height * 0.07,

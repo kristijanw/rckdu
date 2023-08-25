@@ -81,11 +81,7 @@ class SingleNewsScreen extends HookWidget {
                       height: size.height * 0.25,
                       fit: BoxFit.cover,
                     )
-                  : Container(
-                      width: double.infinity,
-                      height: size.height * 0.25,
-                      color: Colors.amber,
-                    ),
+                  : Container(),
             ),
             Padding(
               padding: const EdgeInsets.all(15),

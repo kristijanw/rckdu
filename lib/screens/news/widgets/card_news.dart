@@ -61,10 +61,11 @@ class NewsWidget extends StatelessWidget {
                         height: 150,
                         fit: BoxFit.cover,
                       )
-                    : Container(
+                    : SvgPicture.asset(
+                        'assets/images/noimage.svg',
                         width: 150,
                         height: 150,
-                        color: Colors.amber,
+                        fit: BoxFit.cover,
                       ),
               ),
               Expanded(

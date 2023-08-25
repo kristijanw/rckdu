@@ -11,14 +11,14 @@ final class SplashScreen extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(() {
       return Timer(
-        const Duration(seconds: 4),
+        const Duration(seconds: 6),
         () => context.go('/language'),
       ).cancel;
     }, []);
 
     return Scaffold(
       body: Image.asset(
-        "assets/images/splash.gif",
+        "assets/images/startanim.gif",
         height: double.infinity,
         width: double.infinity,
         fit: BoxFit.cover,

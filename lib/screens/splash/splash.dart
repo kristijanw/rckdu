@@ -11,7 +11,7 @@ final class SplashScreen extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(() {
       return Timer(
-        const Duration(seconds: 6),
+        const Duration(milliseconds: 4500),
         () => context.go('/language'),
       ).cancel;
     }, []);

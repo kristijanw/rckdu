@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:rckdu/models/category_model.dart';
 import 'package:rckdu/models/news_model.dart';
 import 'package:rckdu/screens/news/widgets/card_news.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
@@ -17,8 +19,17 @@ class _NewsScreenState extends State<NewsScreen> {
   List newsData = [];
 
   Future<void> fetchNews() async {
+    final prefs = await SharedPreferences.getInstance();
+    List cc = prefs.getStringList('choiseCat') ?? [];
+    List<String> catIds = [];
+    for (var element in cc) {
+      final el = CategoryModel.fromJson(jsonDecode(element));
+      catIds.add(el.id.toString());
+    }
+    String idString = catIds.join(',');
+
     var response = await http.get(
-      Uri.parse('https://rckdu.hr/wp-json/wp/v2/posts'),
+      Uri.parse('https://rckdu.hr/wp-json/wp/v2/posts?categories=$idString'),
     );
     var jsonData = json.decode(response.body);
 

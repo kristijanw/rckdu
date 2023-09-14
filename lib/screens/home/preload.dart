@@ -1,31 +1,200 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:rckdu/models/category_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-final class HomePreload extends HookWidget {
+final class HomePreload extends StatefulWidget {
   const HomePreload({super.key});
 
   @override
+  State<HomePreload> createState() => _HomePreloadState();
+}
+
+class _HomePreloadState extends State<HomePreload> {
+  List<CategoryModel> categoriesData = [];
+
+  Future<void> fetchCat() async {
+    var response = await http.get(
+      Uri.parse('https://rckdu.hr/wp-json/wp/v2/categories'),
+    );
+    final List<dynamic> result = json.decode(response.body);
+
+    setState(() {
+      categoriesData =
+          result.map((category) => CategoryModel.fromJson(category)).toList();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCat();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    useEffect(() {
-      return Timer(
-        const Duration(seconds: 5),
-        () => context.go('/navigation'),
-      ).cancel;
-    }, []);
+    var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Image.asset(
-        context.locale.toString() == 'en_US'
-            ? "assets/images/preloadhome_en.png"
-            : "assets/images/preloadhome.png",
-        height: double.infinity,
+      body: Container(
         width: double.infinity,
-        fit: BoxFit.cover,
+        decoration: const BoxDecoration(
+          color: Colors.red,
+          image: DecorationImage(
+            image: AssetImage("assets/images/preloadhome.png"),
+            fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: size.height * 0.07,
+                  vertical: size.height * 0.03,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(252, 252, 252, 0.80),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(size.width * 0.05),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'preload'.tr(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: size.height * 0.02,
+                            color: const Color.fromRGBO(74, 74, 74, 1),
+                          ),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.05,
+                        ),
+                        Image.asset(
+                          "assets/images/eu-logotipi.png",
+                          width: double.infinity,
+                          height: size.height * 0.25,
+                          fit: BoxFit.contain,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.05,
+              ),
+              Column(
+                children: [
+                  Text(
+                    'preloadTxt'.tr(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: size.height * 0.03,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.05,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _showMultiSelect(context, categoriesData);
+                    },
+                    child: Container(
+                      width: size.width * 0.5,
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromRGBO(193, 2, 48, 1),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'preloadButton'.tr(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
+    );
+  }
+
+  void _showMultiSelect(
+      BuildContext context, List<CategoryModel> categoriesData) async {
+    final items = categoriesData
+        .map((cat) => MultiSelectItem<CategoryModel>(cat, cat.name ?? ''))
+        .toList();
+
+    List<CategoryModel> selectedCat = [];
+
+    await showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (ctx) {
+        return MultiSelectBottomSheet(
+          items: items,
+          initialValue: selectedCat,
+          onConfirm: (values) async {
+            List<String> choiseCategory =
+                values.map((item) => jsonEncode(item.toJson())).toList();
+
+            SharedPreferences pref = await SharedPreferences.getInstance();
+            await pref.setStringList(
+              'choiseCat',
+              choiseCategory,
+            );
+
+            Timer(
+              const Duration(seconds: 2),
+              () => context.go('/navigation'),
+            ).cancel;
+          },
+          maxChildSize: 0.8,
+          title: const Text(
+            'Odaberite jednu ili više od ponuđenih kategorija',
+            textAlign: TextAlign.center,
+          ),
+          cancelText: const Text(
+            'Odustani',
+            style: TextStyle(
+              color: Color(0xffC10230),
+            ),
+          ),
+          confirmText: const Text(
+            'U redu',
+            style: TextStyle(
+              color: Color(0xffC10230),
+            ),
+          ),
+          checkColor: Colors.white,
+          selectedColor: const Color(0xffC10230),
+        );
+      },
     );
   }
 }

@@ -30,11 +30,11 @@ var theme = ThemeData(
     ),
     bodyLarge: TextStyle(
       fontSize: 16,
-      fontFamily: 'Hind',
+      fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
     ),
-    bodyMedium: TextStyle(fontSize: 14, fontFamily: 'Hind'),
-    bodySmall: TextStyle(fontSize: 16, fontFamily: 'Hind'),
+    bodyMedium: TextStyle(fontSize: 14, fontFamily: 'Poppins'),
+    bodySmall: TextStyle(fontSize: 16, fontFamily: 'Poppins'),
   ),
   /*
   buttonTheme: ButtonThemeData(
@@ -70,7 +70,7 @@ var theme = ThemeData(
   listTileTheme: const ListTileThemeData(
     titleTextStyle: TextStyle(
       fontSize: 14,
-      fontFamily: 'Hind',
+      fontFamily: 'Poppins',
       color: Colors.black,
     ),
   ),

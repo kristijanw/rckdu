@@ -74,7 +74,7 @@ Future<void> onStart(ServiceInstance service) async {
   DartPluginRegistrant.ensureInitialized();
 
   // bring to foreground
-  Timer.periodic(const Duration(minutes: 45), (timer) async {
+  Timer.periodic(const Duration(seconds: 60), (timer) async {
     log('pokrenuto');
     checkForNewNews(locNotf);
   });

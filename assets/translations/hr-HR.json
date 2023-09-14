@@ -9,5 +9,9 @@
 
     "home1": "TURISTIČKA I UGOSTITELJSKA ŠKOLA DUBROVNIK",
     "home2": "Regionalni centar kompetentnosti u turizmu i ugostiteljstvu Dubrovnik",
-    "home3": "Regionalni centar kompetentnosti Dubrovnik – RCK DU je mjesto izvrsnosti strukovnog obrazovanja i osposobljavanja te obuhvaća jačanje kapaciteta i stručnosti ljudskih resursa u sektoru Turizam i ugostiteljstvo."
- }
+    "home3": "Regionalni centar kompetentnosti Dubrovnik – RCK DU je mjesto izvrsnosti strukovnog obrazovanja i osposobljavanja te obuhvaća jačanje kapaciteta i stručnosti ljudskih resursa u sektoru Turizam i ugostiteljstvo.",
+
+    "preload": "Projekt je sufinancirala Europska unija iz Europskog socijalnog fonda",
+    "preloadTxt": "Personaliziraj prikaz novosti i odaberi svoje kategorije:",
+    "preloadButton": "Odaberi kategorije"
+}

@@ -13,5 +13,9 @@
 
     "preload": "Projekt je sufinancirala Europska unija iz Europskog socijalnog fonda",
     "preloadTxt": "Personaliziraj prikaz novosti i odaberi svoje kategorije:",
-    "preloadButton": "Odaberi kategorije"
+    "preloadButton": "Odaberi kategorije",
+
+    "playQuiz": "Zaigraj kviz",
+    "playQuitTxt": "Zaigraj kviz i otkrij koji smjer u okviru naše škole je baš za tebe!",
+    "resetQuiz": "Igraj ponovo"
 }

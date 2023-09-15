@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:rckdu/screens/home/preload.dart';
 import 'package:rckdu/screens/language/language.dart';
 import 'package:rckdu/screens/navigation/navigation_bar.dart';
+import 'package:rckdu/screens/quiz/quiz_screen.dart';
 import 'package:rckdu/screens/splash/splash.dart';
 
 final GoRouter router = GoRouter(
@@ -31,6 +32,12 @@ final GoRouter router = GoRouter(
       path: '/navigation',
       builder: (BuildContext context, GoRouterState state) {
         return const NavigationBarBottom();
+      },
+    ),
+    GoRoute(
+      path: '/quiz',
+      builder: (BuildContext context, GoRouterState state) {
+        return const QuizScreen();
       },
     ),
   ],

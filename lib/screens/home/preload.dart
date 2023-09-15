@@ -170,11 +170,11 @@ class _HomePreloadState extends State<HomePreload> {
             );
 
             Timer(
-              const Duration(seconds: 2),
+              const Duration(seconds: 1),
               () => context.go('/navigation'),
             ).cancel;
           },
-          maxChildSize: 0.8,
+          maxChildSize: 0.9,
           title: const Text(
             'Odaberite jednu ili više od ponuđenih kategorija',
             textAlign: TextAlign.center,

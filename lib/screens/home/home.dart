@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,10 +26,60 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Image.asset(
-              "assets/images/home_image.png",
-              width: double.infinity,
-              fit: BoxFit.cover,
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/home_image.png"),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.bottomCenter,
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: size.height * 0.03,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'playQuitTxt'.tr(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.height * 0.02,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    InkWell(
+                      onTap: () => context.go('/quiz'),
+                      child: Container(
+                        width: size.width * 0.5,
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromRGBO(193, 2, 48, 1),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'playQuiz'.tr(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.03,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           Expanded(

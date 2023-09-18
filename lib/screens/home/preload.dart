@@ -18,6 +18,7 @@ final class HomePreload extends StatefulWidget {
 
 class _HomePreloadState extends State<HomePreload> {
   List<CategoryModel> categoriesData = [];
+  List selectedCat = [];
 
   Future<void> fetchCat() async {
     var response = await http.get(
@@ -31,10 +32,20 @@ class _HomePreloadState extends State<HomePreload> {
     });
   }
 
+  void fetchSelectedCat() async {
+    final prefs = await SharedPreferences.getInstance();
+    List cc = prefs.getStringList('choiseCat') ?? [];
+
+    setState(() {
+      selectedCat = cc;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     fetchCat();
+    fetchSelectedCat();
   }
 
   @override
@@ -93,8 +104,50 @@ class _HomePreloadState extends State<HomePreload> {
                   ),
                 ),
               ),
+              if (selectedCat.isNotEmpty) ...{
+                Column(
+                  children: [
+                    Text(
+                      'Izabrane kategorije',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.height * 0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    Wrap(
+                      children: [
+                        ...selectedCat.map((e) {
+                          final el = CategoryModel.fromJson(jsonDecode(e));
+                          return Container(
+                            margin: const EdgeInsets.only(
+                              right: 10,
+                              bottom: 10,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xffC10230),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: Text(
+                              el.name.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ],
+                ),
+              },
               SizedBox(
-                height: size.height * 0.05,
+                height: size.height * 0.01,
               ),
               Column(
                 children: [
@@ -110,26 +163,68 @@ class _HomePreloadState extends State<HomePreload> {
                   SizedBox(
                     height: size.height * 0.05,
                   ),
-                  InkWell(
-                    onTap: () {
-                      _showMultiSelect(context, categoriesData);
-                    },
-                    child: Container(
-                      width: size.width * 0.5,
-                      padding: const EdgeInsets.only(top: 10, bottom: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromRGBO(193, 2, 48, 1),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'preloadButton'.tr(),
-                          style: const TextStyle(
-                            color: Colors.white,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: size.height * 0.03,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              _showMultiSelect(context, categoriesData);
+                            },
+                            child: Container(
+                              width: size.width * 0.5,
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color.fromRGBO(193, 2, 48, 1),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'preloadButton'.tr(),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
                           ),
-                          textAlign: TextAlign.center,
                         ),
-                      ),
+                        SizedBox(
+                          width: size.width * 0.02,
+                        ),
+                        if (selectedCat.isNotEmpty) ...{
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                context.go('/navigation');
+                              },
+                              child: Container(
+                                width: size.width * 0.5,
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: const Color.fromRGBO(193, 2, 48, 1),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'continue'.tr(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        }
+                      ],
                     ),
                   ),
                 ],
@@ -161,6 +256,7 @@ class _HomePreloadState extends State<HomePreload> {
                 values.map((item) => jsonEncode(item.toJson())).toList();
 
             SharedPreferences pref = await SharedPreferences.getInstance();
+
             await pref.setStringList(
               'choiseCat',
               choiseCategory,

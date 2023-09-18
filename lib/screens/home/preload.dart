@@ -213,7 +213,7 @@ class _HomePreloadState extends State<HomePreload> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    'continue'.tr(),
+                                    'skip'.tr(),
                                     style: const TextStyle(
                                       color: Colors.white,
                                     ),

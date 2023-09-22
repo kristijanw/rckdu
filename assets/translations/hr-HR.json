@@ -1,0 +1,24 @@
+{
+    "welcome":"Dobrodošli",
+    "choiseLang":"Odaberite svoj jezik",
+    "go": "Krenimo",
+    "newsTitle": "Novosti",
+
+    "navBarHome": "Naslovna",
+    "navBarNews": "Novosti",
+
+    "home1": "TURISTIČKA I UGOSTITELJSKA ŠKOLA DUBROVNIK",
+    "home2": "Regionalni centar kompetentnosti u turizmu i ugostiteljstvu Dubrovnik",
+    "home3": "Regionalni centar kompetentnosti Dubrovnik – RCK DU je mjesto izvrsnosti strukovnog obrazovanja i osposobljavanja te obuhvaća jačanje kapaciteta i stručnosti ljudskih resursa u sektoru Turizam i ugostiteljstvo.",
+
+    "preload": "Projekt je sufinancirala Europska unija iz Europskog socijalnog fonda",
+    "preloadTxt": "Personaliziraj prikaz novosti i odaberi svoje kategorije:",
+    "preloadChoiseCat": "Odaberite jednu ili više od ponuđenih kategorija",
+    "preloadButton": "Odaberi kategorije",
+
+    "playQuiz": "Zaigraj kviz",
+    "playQuitTxt": "Zaigraj kviz i otkrij koji smjer u okviru naše škole je baš za tebe!",
+    "resetQuiz": "Igraj ponovo",
+
+    "skip": "Preskoči"
+}

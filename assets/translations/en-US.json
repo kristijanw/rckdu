@@ -1,0 +1,24 @@
+{
+    "welcome":"Welcome",
+    "choiseLang":"Choose your language",
+    "go": "Let's go",
+    "newsTitle": "News",
+
+    "navBarHome": "Homepage",
+    "navBarNews": "News",
+
+    "home1": "TOURISM AND HOSPITALITY SCHOOL DUBROVNIK",
+    "home2": "REGIONAL CENTER OF COMPETENCE IN TOURISM AND HOSPITALITY DUBROVNIK",
+    "home3": "The Regional Center of Competence Dubrovnik - RCK DU is a place of excellence in vocational education and training and includes strengthening the capacity and expertise of human resources in the tourism and hospitality sector.",
+
+    "preload": "The project was co-financed by the European Union from the European Social Fund",
+    "preloadTxt": "Personalize the display of news and choose your categories:",
+    "preloadChoiseCat": "Choose one or more of the offered categories",
+    "preloadButton": "Select categories",
+
+    "playQuiz": "Play the quiz",
+    "playQuitTxt": "Play the quiz and find out which major within our school is right for you!",
+    "resetQuiz": "Play again",
+
+    "skip": "Skip"
+ }

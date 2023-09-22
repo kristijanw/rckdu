@@ -15,15 +15,41 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> {
   final _questions = allQuestions;
+  final allprofession = allProfession;
   var _questionIndex = 0;
   var _totalScore = 0;
 
-  void _answerQuestion(int score) {
-    _totalScore += score;
+  void dodijeliBodove(odabranaZanimanja, svaZanimanja) {
+    for (String odabranoZanimanje in odabranaZanimanja) {
+      for (int i = 0; i < svaZanimanja.length; i++) {
+        if (svaZanimanja[i]['title'] == odabranoZanimanje) {
+          svaZanimanja[i]['score']++;
+        }
+      }
+    }
+  }
+
+  void resetirajBodove(svaZanimanja) {
+    for (int i = 0; i < svaZanimanja.length; i++) {
+      svaZanimanja[i]['score'] = 0;
+    }
+  }
+
+  void _answerQuestion(int score, profession) {
+    // _totalScore += score;
+
+    if (profession != null) {
+      dodijeliBodove(profession, allprofession);
+    }
 
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
+
+    // Ispis rezultata
+    for (var zanimanje in allprofession) {
+      print('Zanimanje: ${zanimanje['title']}, Bodovi: ${zanimanje['score']}');
+    }
 
     if (_questionIndex < _questions.length) {
       log('We have more questions!');
@@ -33,6 +59,7 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void _resetQuiz() {
+    resetirajBodove(allprofession);
     setState(() {
       _questionIndex = 0;
       _totalScore = 0;

@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSLocalNotificationsUsageDescription</key>
+	<string>Ova aplikacija koristi notifikacije kako bi vam pružila ažurirane informacije i obavijesti o vašim novostima i događajima.</string>
 	<key>CFBundleDisplayName</key>
 	<string>RCK DU</string>
 	<key>CFBundleExecutable</key>

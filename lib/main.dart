@@ -61,6 +61,7 @@ Future<void> initializeService() async {
   await service.configure(
     iosConfiguration: IosConfiguration(
       autoStart: true,
+      onForeground: onStart,
       onBackground: iosBackground,
     ),
     androidConfiguration: AndroidConfiguration(
@@ -69,6 +70,8 @@ Future<void> initializeService() async {
       isForegroundMode: false,
     ),
   );
+
+  service.startService();
 }
 
 @pragma('vm:entry-point')
@@ -84,8 +87,6 @@ Future<void> onStart(ServiceInstance service) async {
 
 @pragma('vm:entry-point')
 Future<bool> iosBackground(ServiceInstance service) async {
-  DartPluginRegistrant.ensureInitialized();
-
   Timer.periodic(const Duration(seconds: 60), (timer) async {
     // ignore: avoid_print
     print('pokrenuto');

@@ -4,7 +4,12 @@ class LocalNotification {
   static Future init(FlutterLocalNotificationsPlugin localNotifPlugin) async {
     var andInit = const AndroidInitializationSettings('@mipmap/ic_launcher');
     DarwinInitializationSettings initSettingsDarwin =
-        const DarwinInitializationSettings();
+        DarwinInitializationSettings(
+          requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+      onDidReceiveLocalNotification: (int id, String? title, String? body, String? payload) async {}
+        );
 
     var initSettings = InitializationSettings(
       android: andInit,
@@ -30,9 +35,7 @@ class LocalNotification {
       priority: Priority.high,
     );
 
-    const DarwinNotificationDetails darwinNot = DarwinNotificationDetails(
-      presentSound: false,
-    );
+    const DarwinNotificationDetails darwinNot = DarwinNotificationDetails();
 
     var not = NotificationDetails(
       android: androidNotificationDetails,

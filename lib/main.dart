@@ -21,9 +21,7 @@ Future<void> main() async {
   PermissionStatus status = await Permission.notification.request();
   log('Allow notification: $status');
 
-  if (status.isGranted) {
-    await initializeService();
-  }
+  await initializeService();
 
   runApp(
     EasyLocalization(
@@ -61,7 +59,10 @@ Future<void> initializeService() async {
   final service = FlutterBackgroundService();
 
   await service.configure(
-    iosConfiguration: IosConfiguration(),
+    iosConfiguration: IosConfiguration(
+      autoStart: true,
+      onBackground: iosBackground,
+    ),
     androidConfiguration: AndroidConfiguration(
       onStart: onStart,
       autoStart: true,
@@ -79,4 +80,17 @@ Future<void> onStart(ServiceInstance service) async {
     print('pokrenuto');
     checkForNewNews(locNotf);
   });
+}
+
+@pragma('vm:entry-point')
+Future<bool> iosBackground(ServiceInstance service) async {
+  DartPluginRegistrant.ensureInitialized();
+
+  Timer.periodic(const Duration(seconds: 60), (timer) async {
+    // ignore: avoid_print
+    print('pokrenuto');
+    checkForNewNews(locNotf);
+  });
+
+  return true;
 }

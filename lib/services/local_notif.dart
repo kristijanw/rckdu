@@ -5,11 +5,11 @@ class LocalNotification {
     var andInit = const AndroidInitializationSettings('@mipmap/ic_launcher');
     DarwinInitializationSettings initSettingsDarwin =
         DarwinInitializationSettings(
-          requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,
-      onDidReceiveLocalNotification: (int id, String? title, String? body, String? payload) async {}
-        );
+            requestAlertPermission: true,
+            requestBadgePermission: true,
+            requestSoundPermission: true,
+            onDidReceiveLocalNotification: (int id, String? title, String? body,
+                String? payload) async {});
 
     var initSettings = InitializationSettings(
       android: andInit,

@@ -4,27 +4,97 @@ import 'package:flutter/material.dart';
 class Result extends StatelessWidget {
   final VoidCallback resetQuiz;
   final int resultScore;
+  final dynamic allprofession;
 
   const Result({
     Key? key,
     required this.resetQuiz,
     required this.resultScore,
+    required this.allprofession,
   }) : super(key: key);
 
-  String get resultPhrase {
-    String resultText;
-    if (resultScore >= 41) {
-      resultText = 'Ti si odličan!';
-    } else if (resultScore >= 31) {
-      resultText = 'Prilično simpatično!';
-    } else if (resultScore >= 21) {
-      resultText = 'Trebaš više raditi!';
-    } else if (resultScore >= 1) {
-      resultText = 'Treba se potruditi!';
-    } else {
-      resultText = 'Ovo je loš rezultat!';
+  Widget get resultPhrase {
+    for (var zanimanje in allprofession) {
+      // ignore: avoid_print
+      print('Zanimanje: ${zanimanje['title']}, Bodovi: ${zanimanje['score']}');
     }
-    return resultText;
+
+    // Pronađite najveći broj bodova
+    int maxScore = -1;
+    for (var profession in allprofession) {
+      if (profession['score'] > maxScore) {
+        maxScore = profession['score'];
+      }
+    }
+
+    // Prikazite zanimanja s najviše bodova
+    List<String> topProfessions = [];
+    for (var profession in allprofession) {
+      if (profession['score'] == maxScore) {
+        topProfessions.add(checkProffesionTitle(profession['title']));
+      }
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Na temelju odgovora na kvizu, rezultat ukazuje da bi idealan smjer za tebe mogao biti:",
+          style: TextStyle(
+            fontSize: 23,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.start,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        ...topProfessions.map(
+          (e) => Text(
+            e,
+            textAlign: TextAlign.start,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  String checkProffesionTitle(title) {
+    String result = '';
+
+    switch (title) {
+      case 'konobar':
+        result = 'Konobar';
+        break;
+      case 'kuhar':
+        result = 'Kuhar';
+        break;
+      case 'tes':
+        result = 'Pomoćni kuhar i slastičar';
+        break;
+      case 'slasticar':
+        result = 'Slastičar';
+        break;
+      case 'htt':
+        result = 'Hotelijersko-turistički tehničar';
+        break;
+      case 'thk':
+        result = 'Turističko-hotelijerski komercijalist';
+        break;
+      case 'kt':
+        result = 'KT';
+        break;
+      case 'htk':
+        result = 'HTK';
+        break;
+      default:
+    }
+
+    return result;
   }
 
   @override
@@ -37,16 +107,7 @@ class Result extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            resultPhrase,
-            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ), //Text
-          Text(
-            'Score ' '$resultScore',
-            style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ), //
+          resultPhrase,
           SizedBox(
             height: size.height * 0.1,
           ),

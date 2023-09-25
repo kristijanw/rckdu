@@ -46,11 +46,6 @@ class _QuizScreenState extends State<QuizScreen> {
       _questionIndex = _questionIndex + 1;
     });
 
-    // Ispis rezultata
-    for (var zanimanje in allprofession) {
-      print('Zanimanje: ${zanimanje['title']}, Bodovi: ${zanimanje['score']}');
-    }
-
     if (_questionIndex < _questions.length) {
       log('We have more questions!');
     } else {
@@ -119,6 +114,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 : Result(
                     resultScore: _totalScore,
                     resetQuiz: _resetQuiz,
+                    allprofession: allProfession,
                   ),
           ),
         ],

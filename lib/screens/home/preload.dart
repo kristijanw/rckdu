@@ -209,7 +209,7 @@ class _HomePreloadState extends State<HomePreload> {
                                     const EdgeInsets.only(top: 10, bottom: 10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: const Color.fromRGBO(193, 2, 48, 1),
+                                  color: const Color.fromARGB(255, 67, 67, 67),
                                 ),
                                 child: Center(
                                   child: Text(

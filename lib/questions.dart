@@ -48,7 +48,7 @@ final allQuestions = [
       {
         'text': 'Ne',
         'score': 1,
-        'profession': {'kuhar', 'tes', 'slasticar', 'kt', 'htk'},
+        'profession': {'kuhar', 'tes', 'slasticar', 'kt', 'thk'},
       },
     ],
   },
@@ -70,7 +70,7 @@ final allQuestions = [
       {
         'text': 'otvorenu osobu s izraženim komunikacijskim vještinama',
         'score': 1,
-        'profession': {'htt', 'konobar', 'kt', 'htk'},
+        'profession': {'htt', 'konobar', 'kt', 'thk'},
       },
     ],
   },
@@ -85,7 +85,7 @@ final allQuestions = [
       {
         'text': 'Ne',
         'score': 1,
-        'profession': {'konobar', 'tes', 'htt', 'thk', 'htk'},
+        'profession': {'konobar', 'tes', 'htt', 'thk'},
       },
     ],
   },
@@ -171,7 +171,7 @@ final allQuestions = [
       {
         'text': 'Ne',
         'score': 1,
-        'profession': {'konobar', 'tes', 'htt', 'thk', 'htk'},
+        'profession': {'konobar', 'tes', 'htt', 'thk'},
       },
     ],
   },
@@ -185,5 +185,4 @@ final allProfession = [
   {"title": "htt", "score": 0},
   {"title": "thk", "score": 0},
   {"title": "kt", "score": 0},
-  {"title": "htk", "score": 0},
 ];

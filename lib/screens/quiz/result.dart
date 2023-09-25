@@ -86,10 +86,7 @@ class Result extends StatelessWidget {
         result = 'Turističko-hotelijerski komercijalist';
         break;
       case 'kt':
-        result = 'KT';
-        break;
-      case 'htk':
-        result = 'HTK';
+        result = 'Kuharski tehničar';
         break;
       default:
     }

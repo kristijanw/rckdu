@@ -70,12 +70,13 @@ Future<void> initializeService() async {
   );
 }
 
+@pragma('vm:entry-point')
 Future<void> onStart(ServiceInstance service) async {
   DartPluginRegistrant.ensureInitialized();
 
-  // bring to foreground
   Timer.periodic(const Duration(seconds: 60), (timer) async {
-    log('pokrenuto');
+    // ignore: avoid_print
+    print('pokrenuto');
     checkForNewNews(locNotf);
   });
 }

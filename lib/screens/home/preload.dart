@@ -108,7 +108,7 @@ class _HomePreloadState extends State<HomePreload> {
                 Column(
                   children: [
                     Text(
-                      'Izabrane kategorije',
+                      'selectedc'.tr(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: size.height * 0.03,
@@ -272,15 +272,15 @@ class _HomePreloadState extends State<HomePreload> {
             'preloadChoiseCat'.tr(),
             textAlign: TextAlign.center,
           ),
-          cancelText: const Text(
-            'Odustani',
-            style: TextStyle(
+          cancelText: Text(
+            'cancel'.tr(),
+            style: const TextStyle(
               color: Color(0xffC10230),
             ),
           ),
-          confirmText: const Text(
-            'U redu',
-            style: TextStyle(
+          confirmText: Text(
+            'okej'.tr(),
+            style: const TextStyle(
               color: Color(0xffC10230),
             ),
           ),

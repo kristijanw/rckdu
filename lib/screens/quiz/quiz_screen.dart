@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rckdu/questions.dart';
@@ -14,7 +15,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final _questions = allQuestions;
+  List<Map<String, Object>> _questions = [];
   final allprofession = allProfession;
   var _questionIndex = 0;
   var _totalScore = 0;
@@ -62,6 +63,22 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Initialize _questions based on the locale
+    if (context.locale.toString() == '') {
+      setState(() {
+        _questions = allQuestions;
+      });
+    } else {
+      setState(() {
+        _questions = allQuestionsEng;
+      });
+    }
+  }
+
+  @override
   void initState() {
     super.initState();
   }
@@ -79,7 +96,7 @@ class _QuizScreenState extends State<QuizScreen> {
           onPressed: () => context.go('/navigation'),
         ),
         title: Text(
-          'Kviz',
+          'quizTitle'.tr(),
           style: TextStyle(
             color: Colors.white,
             fontSize: size.height * 0.03,

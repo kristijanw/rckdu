@@ -38,11 +38,11 @@ class Result extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Na temelju odgovora na kvizu, rezultat ukazuje da bi idealan smjer za tebe mogao biti:",
-          style: TextStyle(
+        Text(
+          "result1".tr(),
+          style: const TextStyle(
             fontSize: 23,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
           ),
           textAlign: TextAlign.start,
         ),

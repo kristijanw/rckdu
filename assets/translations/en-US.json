@@ -4,6 +4,11 @@
     "go": "Let's go",
     "newsTitle": "News",
 
+    "selectedc": "Selected categories",
+
+    "cancel": "Cancel",
+    "okej": "Confirm",
+
     "navBarHome": "Homepage",
     "navBarNews": "News",
 
@@ -16,9 +21,12 @@
     "preloadChoiseCat": "Choose one or more of the offered categories",
     "preloadButton": "Select categories",
 
+    "quizTitle": "Quiz",
     "playQuiz": "Play the quiz",
     "playQuitTxt": "Play the quiz and find out which major within our school is right for you!",
     "resetQuiz": "Play again",
+
+    "result1": "Based on the answers to the quiz, the result indicates that the ideal major for you could be:",
 
     "skip": "Skip"
  }

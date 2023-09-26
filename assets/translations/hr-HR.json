@@ -4,6 +4,11 @@
     "go": "Krenimo",
     "newsTitle": "Novosti",
 
+    "selectedc": "Izabrane kategorije",
+
+    "cancel": "Odustani",
+    "okej": "U redu",
+
     "navBarHome": "Naslovna",
     "navBarNews": "Novosti",
 
@@ -16,9 +21,12 @@
     "preloadChoiseCat": "Odaberite jednu ili više od ponuđenih kategorija",
     "preloadButton": "Odaberi kategorije",
 
+    "quizTitle": "Kviz",
     "playQuiz": "Zaigraj kviz",
     "playQuitTxt": "Zaigraj kviz i otkrij koji smjer u okviru naše škole je baš za tebe!",
     "resetQuiz": "Igraj ponovo",
+    
+    "result1": "Na temelju odgovora na kvizu, rezultat ukazuje da bi idealan smjer za tebe mogao biti:",
 
     "skip": "Preskoči"
 }

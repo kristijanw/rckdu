@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -111,18 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: size.height * 0.02,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.02,
-                    ),
-                    Text(
-                      'home3'.tr(),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: size.height * 0.016,
                         fontWeight: FontWeight.w400,
                       ),
                     ),

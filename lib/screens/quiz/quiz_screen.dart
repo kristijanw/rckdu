@@ -67,7 +67,7 @@ class _QuizScreenState extends State<QuizScreen> {
     super.didChangeDependencies();
 
     // Initialize _questions based on the locale
-    if (context.locale.toString() == '') {
+    if (context.locale.toString() == 'hr_HR') {
       setState(() {
         _questions = allQuestions;
       });

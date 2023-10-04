@@ -2,7 +2,7 @@ name: rckdu
 description: A new Flutter project.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.5+1005
+version: 1.0.6+1006
 
 environment:
   sdk: ">=3.0.1 <4.0.0"
